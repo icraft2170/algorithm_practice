@@ -4,15 +4,14 @@ import java.util.Scanner;
 
 public class Main {
   public int solution(String str) {
-    StringBuilder builder = new StringBuilder();
-    for (int i = 0; i < str.length(); i++) {
-      char codePoint = str.charAt(i);
-      if (!Character.isAlphabetic(codePoint)) {
-        builder.append(codePoint);
+    int answer = 0;
+    char[] chars = str.toCharArray();
+    for (char ch : chars) {
+      if (ch >= 48 && ch <= 57) {
+        answer = answer * 10 + (ch - 48);
       }
     }
-
-    return Integer.parseInt(builder.toString());
+    return answer;
   }
 
   public static void main(String[] args) {
