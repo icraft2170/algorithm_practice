@@ -3,17 +3,16 @@ package me.hero.str.p12;
 import java.util.Scanner;
 
 public class Main {
-  public static final int COMMON_RATIO = 7;
+  public static final int UNIT_NUMBER = 7;
 
   public String solution(String str, int number) {
-    str = str.replaceAll("[*]", "0");
-    str = str.replaceAll("[#]", "1");
     StringBuilder answer = new StringBuilder();
 
     for (int i = 0; i < number; i++) {
-      String substring = str.substring(i * COMMON_RATIO, (i * COMMON_RATIO) + COMMON_RATIO);
+      String substring = str.substring(0, UNIT_NUMBER).replace('#', '1').replace('*', '0');
       char ch = (char) Integer.parseInt(substring, 2);
       answer.append(ch);
+      str = str.substring(7);
     }
 
     return answer.toString();
