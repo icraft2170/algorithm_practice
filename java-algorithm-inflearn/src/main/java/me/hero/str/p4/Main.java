@@ -1,6 +1,5 @@
-package me.hero.p4;
+package me.hero.str.p4;
 
-import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
   public String solution(String str) {

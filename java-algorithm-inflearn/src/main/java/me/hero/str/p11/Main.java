@@ -1,4 +1,4 @@
-package me.hero.p11;
+package me.hero.str.p11;
 
 import java.util.Scanner;
 
