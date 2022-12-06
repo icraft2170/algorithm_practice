@@ -4,12 +4,12 @@ import java.util.Scanner;
 // 1 - 가위 / 2 - 바위 / 3 - 보
 public class Main {
   public String solution(int playerA, int playerB) {
-    if ((playerA == 1 && playerB == 2) || (playerA == 2 && playerB == 3) || (playerA == 3 && playerB == 1)) {
-      return "B";
+    if (playerA == playerB) {
+      return "D";
     } else if ((playerB == 1 && playerA == 2) || (playerB == 2 && playerA == 3) || (playerB == 3 && playerA == 1)) {
       return "A";
     } else {
-      return "D";
+      return "B";
     }
   }
 
