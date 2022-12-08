@@ -3,37 +3,42 @@ package me.hero.array.p06;
 import java.util.Scanner;
 
 public class Main {
-  public void solution(String[] numbers) {
-    int[] numberArray = new int[numbers.length];
-    int index = 0;
-    for (String numberStr : numbers) {
-      numberArray[index] = Integer.parseInt(new StringBuilder(numberStr).reverse().toString());
-      index++;
-    }
+  public void solution(int[] numbers) {
+    int n = numbers.length;
+    for (int i = 0; i < n; i++) {
+      int tmp = numbers[i];
+      int result  = 0;
+      while (tmp > 0) {
+        int t = tmp % 10;
+        result = result * 10 + t;
+        tmp = tmp / 10;
+      }
 
-    for (int i = 0; i < numberArray.length; i++) {
-      printPrimeNumber(numberArray[i]);
+      if (isPrime(result)) {
+        System.out.print(result + " ");
+      }
     }
-
   }
 
-  private void printPrimeNumber(int number) {
-    int count = 0;
-    for (int i = 1; i <= number; i++) {
-      if (count > 2) return;
-      if (number % i == 0) count++;
+  private boolean isPrime(int num) {
+    if (num == 1) {
+      return false;
     }
-    if (count == 2) {
-      System.out.print(number + " ");
+    for (int i = 2; i < num; i++) {
+      if (num % i == 0) {
+        return false;
+      }
     }
+    return true;
   }
+
 
   public static void main(String[] args) {
     Scanner reader = new Scanner(System.in);
     int count = reader.nextInt();
-    String[] numbers = new String[count];
+    int[] numbers = new int[count];
     for (int i = 0; i < count; i++) {
-      numbers[i] = reader.next();
+      numbers[i] = reader.nextInt();
     }
 
     Main main = new Main();
