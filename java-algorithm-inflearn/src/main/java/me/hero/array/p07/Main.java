@@ -3,7 +3,7 @@ package me.hero.array.p07;
 import java.util.Scanner;
 
 public class Main {
-  public int solution(int index, int[] scores) {
+  public int solution(int[] scores) {
     int score = 0;
     int count = 1;
 
@@ -27,7 +27,7 @@ public class Main {
     }
 
     Main main = new Main();
-    int score = main.solution(index, scores);
+    int score = main.solution(scores);
     System.out.print(score);
   }
 }
