@@ -1,55 +1,28 @@
 package me.hero.array.p09;
-
 import java.util.Scanner;
 
 public class Main {
   public int solution(int[][] number, int index) {
-    int max = 0;
-    int sum = 0;
+    int answer = Integer.MIN_VALUE;
+    int sum1; int sum2;
 
     for (int i = 0; i < index; i++) {
+      sum1 = sum2 = 0;
       for (int j = 0; j < index; j++) {
-        sum += number[i][j];
+        sum1 += number[i][j];
+        sum2 += number[j][i];
       }
-      if (max < sum) {
-        max = sum;
-      }
-      sum = 0;
+      answer = Math.max(answer, sum1);
+      answer = Math.max(answer, sum2);
     }
-
+    sum1 = sum2 = 0;
     for (int i = 0; i < index; i++) {
-      for (int j = 0; j < index; j++) {
-        sum += number[j][i];
-      }
-      if (max < sum) {
-        max = sum;
-      }
-      sum = 0;
+      sum1 += number[i][i];
+      sum2 += number[i][index - i - 1];
     }
-
-    for (int i = 0; i < index; i++) {
-      for (int j = 0; j < index; j++) {
-        if (i == j) {
-          sum += number[j][i];
-        }
-      }
-    }
-    if (max < sum) {
-      max = sum;
-    }
-    sum = 0;
-
-    for (int i = 0; i < index; i++) {
-      for (int j = 0; j < index; j++) {
-        if (i + j == (index)) {
-          sum += number[i][j];
-        }
-      }
-    }
-    if (max < sum) {
-      max = sum;
-    }
-    return max;
+    answer = Math.max(answer, sum1);
+    answer = Math.max(answer, sum2);
+    return answer;
   }
 
   public static void main(String[] args) {
