@@ -1,32 +1,25 @@
 package me.tpsw.p1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-  public int[] solution(int[] arr1, int[] arr2) {
-    int i1, i2;
-    i1 = i2 = 0;
-    int[] results = new int[arr1.length + arr2.length];
+  public ArrayList<Integer> solution(int[] arr1, int[] arr2, int num1, int num2) {
+    ArrayList<Integer> results = new ArrayList<>();
+    int p1, p2;
+    p1 = p2 = 0;
 
-    for (int i = 0; i < results.length; i++) {
-      if (i1 == arr1.length) {
-        results[i] = arr2[i2];
-        i2++;
-        continue;
-      }
-      if (i2 == arr2.length) {
-        results[i] = arr1[i1];
-        i1++;
-        continue;
-      }
+    while (p1 < num1 && p2 < num2) {
+      if (arr1[p1] < arr2[p2]) results.add(arr1[p1++]);
+      else results.add(arr2[p2++]);
+    }
 
-      if (arr1[i1] < arr2[i2]) {
-        results[i] = arr1[i1];
-        i1++;
-      } else {
-        results[i] = arr2[i2];
-        i2++;
-      }
+    while (p1 < num1) {
+      results.add(arr1[p1++]);
+    }
+
+    while (p2 < num2) {
+      results.add(arr2[p2++]);
     }
     return results;
   }
@@ -47,9 +40,9 @@ public class Main {
     }
 
     Main main = new Main();
-    int[] results = main.solution(arr1, arr2);
-    for (int result : results) {
-      System.out.print(result + " ");
-    }
+    ArrayList<Integer> results = main.solution(arr1, arr2, num1, num2);
+    results.forEach(i -> {
+      System.out.print( i + " ");
+    });
   }
 }
