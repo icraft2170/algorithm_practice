@@ -5,26 +5,19 @@ public class Main {
   public int solution(int n, int m, int[] arr) {
     int count = 0;
     int sum = 0;
-    int p1 = 0;
+    int lt = 0;
 
-    for (int i = 0; i < n; i++) {
-      sum += arr[i];
-
-      if (sum > m) {
-        while (sum > m) {
-          sum -= arr[p1++];
-        }
+    for (int rt = 0; rt < n; rt++) {
+      sum += arr[rt];
+      if (sum == m)
+        count++;
+      while (sum >= m) {
+        sum -= arr[lt++];
         if (sum == m) {
           count++;
-          continue;
         }
       }
-
-      if (sum == m) {
-        count++;
-      }
     }
-
     return count;
   }
 
