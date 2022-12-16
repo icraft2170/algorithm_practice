@@ -1,3 +1,5 @@
+package me.tpsw.p5;
+
 import java.util.Scanner;
 public class Main {
   public int solution(int n) {

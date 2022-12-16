@@ -1,3 +1,5 @@
+package me.tpsw.p6;
+
 import java.util.Scanner;
 
 public class Main {
