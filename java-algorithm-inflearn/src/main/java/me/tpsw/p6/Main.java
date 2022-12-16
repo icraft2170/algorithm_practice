@@ -1,24 +1,17 @@
-package me.tpsw.p6;
-
 import java.util.Scanner;
 
 public class Main {
   public int solution(int[] arr, int index, int changeableCount) {
-    int rt = 0, lt = 0, count = 0;
-    int maxLength = Integer.MIN_VALUE;
-
-    while (rt < index - 1) {
-      rt++;
-      if (arr[rt] == 0) {
-        count++;
-      }
+    int maxLength = 0, lt = 0, count = 0;
+    for (int rt = 0; rt < index; rt++) {
+      if (arr[rt] == 0) count++;
       while (count > changeableCount) {
-        lt++;
         if (arr[lt] == 0) {
           count--;
         }
+        lt++;
       }
-      maxLength = Math.max((rt - lt), maxLength);
+      maxLength = Math.max(maxLength, rt - lt + 1);
     }
     return maxLength;
   }
