@@ -1,26 +1,17 @@
 import java.util.Scanner;
 public class Main {
   public int solution(int n) {
-    int p1 = 1, p2 = 1, count = 0, sum = 0;
-    while ((n/2 + 1) >= p1) {
-      sum += p1++;
-      if (sum == n) {
-        count++;
-      }
-      while (sum > n) {
-        sum -= p2++;
-        if (sum == n) {
-          count++;
-          break;
-        }
-      }
+    int count = 0, cnt = 1;
+    n--;
+    while (n > 0) {
+      cnt++;
+      n -= cnt;
+      if (n % cnt == 0) count++;
     }
-
     return count;
   }
 
   public static void main(String[] args) {
-
     Scanner reader = new Scanner(System.in);
     int n = reader.nextInt();
 
