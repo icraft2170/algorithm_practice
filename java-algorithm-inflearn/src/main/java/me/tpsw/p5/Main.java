@@ -1,11 +1,8 @@
-package me.tpsw.p5;
-
 import java.util.Scanner;
-
 public class Main {
   public int solution(int n) {
     int p1 = 1, p2 = 1, count = 0, sum = 0;
-    while (p1 < n) {
+    while ((n/2 + 1) >= p1) {
       sum += p1++;
       if (sum == n) {
         count++;
