@@ -5,24 +5,20 @@ import java.util.Scanner;
 
 public class Main {
   public String solution(String str1, String str2) {
-    HashMap<Character, Integer> map1 = new HashMap<>();
-    HashMap<Character, Integer> map2 = new HashMap<>();
+    HashMap<Character, Integer> map = new HashMap<>();
 
     for (char key : str1.toCharArray()) {
-      Integer value = map1.getOrDefault(key, 0);
-      map1.put(key, value + 1);
+      map.put(key, map.getOrDefault(key, 0) + 1);
     }
 
     for (char key : str2.toCharArray()) {
-      Integer value = map2.getOrDefault(key, 0);
-      map2.put(key, value + 1);
+      if (!map.containsKey(key) || map.get(key) == 0) {
+        return "NO";
+      }
+      map.put(key, map.get(key) - 1);
     }
 
-    if (map1.equals(map2)) {
-      return "YES";
-    } else {
-      return "NO";
-    }
+    return "YES";
   }
 
   public static void main(String[] args) {
