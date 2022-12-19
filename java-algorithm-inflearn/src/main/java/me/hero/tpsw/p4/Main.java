@@ -1,4 +1,4 @@
-package me.tpsw.p4;
+package me.hero.tpsw.p4;
 
 import java.util.Scanner;
 public class Main {

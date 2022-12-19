@@ -1,4 +1,4 @@
-package me.tpsw.p6;
+package me.hero.tpsw.p6;
 
 import java.util.Scanner;
 
