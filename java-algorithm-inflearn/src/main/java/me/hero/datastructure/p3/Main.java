@@ -1,19 +1,30 @@
 package me.hero.datastructure.p3;
 
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
   public int[] solution(int n, int k, int[] arr) {
     int[] answer = new int[n - k + 1];
-    HashSet<Integer> set = new HashSet<>();
+    HashMap<Integer, Integer> map = new HashMap<>();
 
-    for (int i = 0; i < answer.length; i++) {
-      for (int j = i; j < k + i; j++) {
-        set.add(arr[j]);
+    for (int i = 0; i < k; i++) {
+      map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+    }
+    answer[0] = map.keySet().size();
+
+    int lt = 0;
+    int rt = k;
+    for (int i = 1; i < answer.length; i++) {
+      map.put(arr[rt], map.getOrDefault(arr[rt], 0) + 1);
+      rt++;
+
+      map.put(arr[lt], map.get(arr[lt]) - 1);
+      if (map.get(arr[lt]) == 0) {
+        map.remove(arr[lt]);
       }
-      answer[i] = set.size();
-      set.clear();
+      lt++;
+      answer[i] = map.keySet().size();
     }
     return answer;
   }
