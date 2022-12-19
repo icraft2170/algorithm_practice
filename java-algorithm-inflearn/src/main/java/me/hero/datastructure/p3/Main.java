@@ -1,31 +1,27 @@
 package me.hero.datastructure.p3;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-  public int[] solution(int n, int k, int[] arr) {
-    int[] answer = new int[n - k + 1];
+  public ArrayList<Integer> solution(int n, int k, int[] arr) {
+    ArrayList<Integer> answer = new ArrayList<>();
     HashMap<Integer, Integer> map = new HashMap<>();
 
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i < k - 1; i++) {
       map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
     }
-    answer[0] = map.keySet().size();
 
     int lt = 0;
-    int rt = k;
-    for (int i = 1; i < answer.length; i++) {
+    for (int rt = k - 1; rt < n; rt++) {
       map.put(arr[rt], map.getOrDefault(arr[rt], 0) + 1);
-      rt++;
-
+      answer.add(map.size());
       map.put(arr[lt], map.get(arr[lt]) - 1);
-      if (map.get(arr[lt]) == 0) {
-        map.remove(arr[lt]);
-      }
+      if (map.get(arr[lt]) == 0) map.remove(arr[lt]);
       lt++;
-      answer[i] = map.keySet().size();
     }
+
     return answer;
   }
 
@@ -40,10 +36,6 @@ public class Main {
     }
 
     Main main = new Main();
-    int[] results = main.solution(n, k, arr);
-
-    for (int result : results) {
-      System.out.print(result + " ");
-    }
+    main.solution(n, k, arr).forEach(i -> System.out.print(i + " "));
   }
 }
