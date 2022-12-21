@@ -36,6 +36,10 @@ public class Main {
     }
 
     Main main = new Main();
-    main.solution(n, k, arr).forEach(i -> System.out.print(i + " "));
+
+    ArrayList<Integer> solution = main.solution(n, k, arr);
+    for (Integer integer : solution) {
+      System.out.print(integer + " ");
+    }
   }
 }
